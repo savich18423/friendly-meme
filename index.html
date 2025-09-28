@@ -5,70 +5,98 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>CaseGalaxy</title>
 <style>
-    /* Базовые стили и шрифты */
-    body {
+    @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+    * {
+        box-sizing: border-box;
         margin: 0;
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        background: linear-gradient(135deg, #6a0dad, #9b30ff);
-        color: #fff;
-        display: flex;
-        flex-direction: column;
-        min-height: 100vh;
-        justify-content: space-between;
+        padding: 0;
     }
 
-    /* Главная секция */
+    body {
+        font-family: 'Roboto', sans-serif;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        background: linear-gradient(135deg, #6a0dad, #9b30ff);
+        color: #fff;
+        overflow-x: hidden;
+    }
+
     .hero {
         text-align: center;
-        padding: 100px 20px 50px;
+        padding: 120px 20px 60px;
+        animation: fadeIn 1s ease forwards;
     }
 
     .hero h1 {
         font-size: 3rem;
+        font-weight: 700;
         margin-bottom: 20px;
+        text-shadow: 0 0 20px rgba(255,255,255,0.2);
+        background: linear-gradient(90deg, #ffb6c1, #8a2be2);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        animation: slideIn 1s ease forwards;
     }
 
     .hero p {
         font-size: 1.2rem;
-        line-height: 1.5;
         max-width: 600px;
         margin: 0 auto;
+        line-height: 1.6;
+        color: rgba(255,255,255,0.9);
     }
 
-    /* Нижние кнопки */
     .bottom-nav {
         display: flex;
         justify-content: space-around;
         background: rgba(0,0,0,0.2);
-        padding: 15px 0;
+        padding: 20px 0;
         border-top: 1px solid rgba(255,255,255,0.3);
+        backdrop-filter: blur(10px);
     }
 
     .bottom-nav button {
-        background: rgba(255,255,255,0.1);
+        background: linear-gradient(145deg, #9b30ff, #6a0dad);
         border: none;
+        border-radius: 16px;
+        padding: 15px 25px;
         color: #fff;
-        padding: 10px 20px;
-        border-radius: 12px;
         font-size: 1rem;
-        cursor: default; /* пока неактивные */
-        transition: all 0.3s ease;
+        font-weight: 600;
+        cursor: default;
+        transition: transform 0.3s, box-shadow 0.3s;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .bottom-nav button span {
+        font-size: 1.8rem;
+        margin-bottom: 5px;
     }
 
     .bottom-nav button:hover {
-        background: rgba(255,255,255,0.2);
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0,0,0,0.4);
     }
 
-    /* Иконки в кнопках (пример с emoji, можно заменить на SVG) */
-    .bottom-nav button span {
-        display: block;
-        font-size: 1.5rem;
-        margin-bottom: 5px;
+    @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+    }
+
+    @keyframes slideIn {
+        from { transform: translateY(-50px); opacity: 0; }
+        to { transform: translateY(0); opacity: 1; }
     }
 
     @media (max-width: 500px) {
         .hero h1 { font-size: 2rem; }
         .hero p { font-size: 1rem; }
+        .bottom-nav button { padding: 12px 18px; font-size: 0.9rem; }
     }
 </style>
 </head>
