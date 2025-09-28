@@ -21,16 +21,13 @@ body {
     position: relative;
 }
 
-/* Звёзды */
-.star, .spark {
-    position: absolute;
-    background: white;
-    border-radius: 50%;
-}
-
+/* Падающие звёзды */
 .star {
+    position: absolute;
     width: 2px;
     height: 2px;
+    background: white;
+    border-radius: 50%;
     animation: fall linear infinite;
 }
 
@@ -39,39 +36,10 @@ body {
     100% { transform: translateY(110vh); opacity: 0; }
 }
 
-/* Spark вокруг аватара */
-.spark {
-    width: 3px;
-    height: 3px;
-    animation: spin 3s linear infinite;
-    opacity: 0.8;
-}
-
-@keyframes spin {
-    0% { transform: rotate(0deg) translateX(90px) rotate(0deg); }
-    100% { transform: rotate(360deg) translateX(90px) rotate(-360deg); }
-}
-
-/* Gradient полосы */
-.gradient-strip {
-    position: absolute;
-    width: 200%;
-    height: 2px;
-    background: linear-gradient(90deg, rgba(255,255,255,0.1), rgba(255,255,255,0.3), rgba(255,255,255,0.1));
-    animation: moveStrip 10s linear infinite;
-    top: 50%;
-    left: -50%;
-}
-
-@keyframes moveStrip {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(50%); }
-}
-
 /* Hero секция */
 .hero {
     text-align: center;
-    padding: 80px 20px 60px;
+    padding: 50px 20px 30px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -85,7 +53,7 @@ body {
     border-radius: 50%;
     border: 5px solid rgba(255,255,255,0.3);
     margin-bottom: 30px;
-    box-shadow: 0 0 40px rgba(255,255,255,0.5), 0 10px 20px rgba(0,0,0,0.4);
+    box-shadow: 0 0 60px rgba(255,255,255,0.4), 0 10px 20px rgba(0,0,0,0.4);
     object-fit: cover;
     animation: popIn 1s ease forwards;
 }
@@ -109,6 +77,23 @@ body {
     color: rgba(255,255,255,0.9);
 }
 
+/* Правила */
+.rules {
+    max-width: 700px;
+    margin: 20px auto;
+    background: rgba(255,255,255,0.05);
+    padding: 20px;
+    border-radius: 12px;
+    text-align: left;
+    font-size: 0.95rem;
+    color: #ccc;
+}
+
+.rules a {
+    color: #8a2be2;
+    text-decoration: underline;
+}
+
 /* Нижние кнопки */
 .bottom-nav {
     display: flex;
@@ -130,11 +115,11 @@ body {
     font-size: 1rem;
     font-weight: 600;
     cursor: default;
-    transition: transform 0.3s, box-shadow 0.3s;
+    transition: transform 0.3s, box-shadow 0.6s, background 1.5s;
     display: flex;
     flex-direction: column;
     align-items: center;
-    box-shadow: 0 0 20px rgba(255,255,255,0.1);
+    box-shadow: 0 0 15px rgba(255,255,255,0.1);
 }
 
 .bottom-nav button span {
@@ -144,7 +129,8 @@ body {
 
 .bottom-nav button:hover {
     transform: translateY(-5px);
-    box-shadow: 0 10px 25px rgba(255,255,255,0.6);
+    box-shadow: 0 10px 25px rgba(255,255,255,0.5);
+    background: linear-gradient(145deg, #b14eff, #7a0dd3);
 }
 
 /* Анимации */
@@ -157,18 +143,21 @@ body {
     .hero p { font-size: 1rem; }
     .hero img { width: 140px; height: 140px; }
     .bottom-nav button { padding: 12px 18px; font-size: 0.9rem; }
+    .rules { font-size: 0.85rem; padding: 15px; }
 }
 </style>
 </head>
 <body>
 
-<div class="gradient-strip"></div>
-
 <div class="hero">
     <img src="https://radika1.link/2025/09/28/ChatGPT-Image-28-SENT.-2025-G.-15_50_30c22794d49f3039c7.png" alt="CaseGalaxy Avatar">
-
     <h1>CaseGalaxy приветствует тебя!</h1>
     <p>Выигрывай Telegram подписки, звезды, криптовалюту и многое другое. Открой кейсы и получай свои награды прямо сейчас!</p>
+</div>
+
+<div class="rules">
+<p><strong>Правила и использование:</strong></p>
+<p>Используя наш сайт и бота CaseGalaxy, вы автоматически соглашаетесь с <a href="https://telegra.ph/Pravila-CaseGalaxy-bot-09-28" target="_blank">правилами CaseGalaxy</a> и подтверждаете, что ознакомлены с ними. Нарушение правил может привести к блокировке.</p>
 </div>
 
 <div class="bottom-nav">
@@ -179,7 +168,7 @@ body {
 </div>
 
 <script>
-// Падающие звезды
+// Падающие звёзды
 const starCount = 100;
 for(let i=0;i<starCount;i++){
     const star = document.createElement('div');
@@ -190,18 +179,6 @@ for(let i=0;i<starCount;i++){
     star.style.animationDuration = 5 + Math.random()*5 + 's';
     star.style.opacity = Math.random();
     document.body.appendChild(star);
-}
-
-// Мерцающие spark вокруг аватара
-const hero = document.querySelector('.hero');
-for(let i=0;i<20;i++){
-    const spark = document.createElement('div');
-    spark.className = 'spark';
-    spark.style.top = '50%';
-    spark.style.left = '50%';
-    spark.style.width = spark.style.height = Math.random()*3+1+'px';
-    spark.style.animationDuration = 3 + Math.random()*2 + 's';
-    hero.appendChild(spark);
 }
 </script>
 
