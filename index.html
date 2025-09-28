@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CaseGalaxy</title>
+<title>CaseGalaxy - Профиль</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 
@@ -48,53 +48,63 @@ body {
 }
 
 .hero img {
-    width: 180px;
-    height: 180px;
+    width: 150px;
+    height: 150px;
     border-radius: 50%;
     border: 5px solid rgba(255,255,255,0.3);
-    margin-bottom: 30px;
+    margin-bottom: 20px;
     box-shadow: 0 0 60px rgba(255,255,255,0.4), 0 10px 20px rgba(0,0,0,0.4);
     object-fit: cover;
     animation: popIn 1s ease forwards;
 }
 
-.hero h1 {
-    font-size: 2.8rem;
+.hero h2 {
+    font-size: 2rem;
     font-weight: 700;
-    margin-bottom: 20px;
-    text-shadow: 0 0 20px rgba(255,255,255,0.2);
-    background: linear-gradient(90deg, #ffb6c1, #8a2be2);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    animation: slideIn 1s ease forwards;
+    margin-bottom: 10px;
 }
 
-.hero p {
-    font-size: 1.2rem;
-    max-width: 600px;
-    margin: 0 auto;
-    line-height: 1.6;
-    color: rgba(255,255,255,0.9);
-}
-
-/* Правила */
-.rules {
-    max-width: 700px;
-    margin: 20px auto;
+.info-box {
     background: rgba(255,255,255,0.05);
-    padding: 20px;
+    padding: 15px 25px;
     border-radius: 12px;
+    margin-bottom: 20px;
+    width: 90%;
+    max-width: 400px;
     text-align: left;
-    font-size: 0.95rem;
     color: #ccc;
 }
 
-.rules a {
-    color: #8a2be2;
-    text-decoration: underline;
+.info-box p { margin-bottom: 8px; }
+
+.profile-buttons {
+    display: flex;
+    justify-content: space-around;
+    width: 90%;
+    max-width: 400px;
+    margin-bottom: 30px;
 }
 
-/* Нижние кнопки */
+.profile-buttons button {
+    background: linear-gradient(145deg, #9b30ff, #6a0dad);
+    border: none;
+    border-radius: 12px;
+    padding: 10px 20px;
+    color: #fff;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.5s;
+    flex: 1;
+    margin: 0 5px;
+}
+
+.profile-buttons button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 15px rgba(255,255,255,0.4);
+    background: linear-gradient(145deg, #b14eff, #7a0dd3);
+}
+
+/* Нижние кнопки навигации */
 .bottom-nav {
     display: flex;
     justify-content: space-around;
@@ -110,22 +120,17 @@ body {
     background: linear-gradient(145deg, #9b30ff, #6a0dad);
     border: none;
     border-radius: 16px;
-    padding: 15px 25px;
+    padding: 12px 18px;
     color: #fff;
-    font-size: 1rem;
+    font-size: 0.95rem;
     font-weight: 600;
-    cursor: default;
-    transition: transform 0.3s, box-shadow 0.6s, background 1.5s;
+    cursor: pointer;
     display: flex;
     flex-direction: column;
     align-items: center;
-    box-shadow: 0 0 15px rgba(255,255,255,0.1);
 }
 
-.bottom-nav button span {
-    font-size: 1.8rem;
-    margin-bottom: 5px;
-}
+.bottom-nav button span { font-size: 1.5rem; margin-bottom: 5px; }
 
 .bottom-nav button:hover {
     transform: translateY(-5px);
@@ -134,42 +139,43 @@ body {
 }
 
 /* Анимации */
-@keyframes fadeIn { from {opacity:0;} to {opacity:1;} }
-@keyframes slideIn { from {transform: translateY(-50px); opacity:0;} to {transform: translateY(0); opacity:1;} }
 @keyframes popIn { from {transform: scale(0); opacity:0;} to {transform: scale(1); opacity:1;} }
 
 @media (max-width: 500px) {
-    .hero h1 { font-size: 2rem; }
-    .hero p { font-size: 1rem; }
-    .hero img { width: 140px; height: 140px; }
-    .bottom-nav button { padding: 12px 18px; font-size: 0.9rem; }
-    .rules { font-size: 0.85rem; padding: 15px; }
+    .hero img { width: 120px; height: 120px; }
+    .hero h2 { font-size: 1.6rem; }
+    .info-box { font-size: 0.85rem; }
+    .profile-buttons button { padding: 8px; font-size: 0.85rem; }
 }
 </style>
 </head>
 <body>
 
 <div class="hero">
-    <img src="https://radika1.link/2025/09/28/ChatGPT-Image-28-SENT.-2025-G.-15_50_30c22794d49f3039c7.png" alt="CaseGalaxy Avatar">
-    <h1>CaseGalaxy приветствует тебя!</h1>
-    <p>Выигрывай Telegram подписки, звезды, криптовалюту и многое другое. Открой кейсы и получай свои награды прямо сейчас!</p>
+    <img id="avatar" src="https://radika1.link/2025/09/28/ChatGPT-Image-28-SENT.-2025-G.-15_50_30c22794d49f3039c7.png" alt="User Avatar">
+    <h2 id="username">Имя пользователя</h2>
 </div>
 
-<div class="rules">
-<p><strong>Правила и использование:</strong></p>
-<p>Используя наш сайт и бота CaseGalaxy, вы автоматически соглашаетесь с <a href="https://telegra.ph/Pravila-CaseGalaxy-bot-09-28" target="_blank">правилами CaseGalaxy</a> и подтверждаете, что ознакомлены с ними. Нарушение правил может привести к блокировке.</p>
+<div class="info-box">
+    <p><strong>ID Telegram:</strong> <span id="userId">123456789</span></p>
+    <p><strong>Баланс:</strong> <span id="balance">0⭐</span></p>
+</div>
+
+<div class="profile-buttons">
+    <button id="depositBtn">Пополнить</button>
+    <button id="withdrawBtn">Вывод</button>
 </div>
 
 <div class="bottom-nav">
     <button><span>🎁</span>Кейсы</button>
-    <button><span>👤</span>Профиль</button>
     <button><span>🎮</span>Игры</button>
     <button><span>📦</span>Прочее</button>
 </div>
 
+<script src="https://telegram.org/js/telegram-web-app.js"></script>
 <script>
 // Падающие звёзды
-const starCount = 100;
+const starCount = 80;
 for(let i=0;i<starCount;i++){
     const star = document.createElement('div');
     star.className = 'star';
@@ -180,6 +186,25 @@ for(let i=0;i<starCount;i++){
     star.style.opacity = Math.random();
     document.body.appendChild(star);
 }
+
+// Telegram Web App данные
+window.Telegram.WebApp.ready();
+
+const user = window.Telegram.WebApp.initDataUnsafe.user; // получаем данные пользователя
+
+if(user){
+    document.getElementById('username').innerText = user.first_name + (user.last_name ? " " + user.last_name : "");
+    document.getElementById('userId').innerText = user.id;
+    document.getElementById('avatar').src = user.photo_url || "https://radika1.link/2025/09/28/ChatGPT-Image-28-SENT.-2025-G.-15_50_30c22794d49f3039c7.png";
+}
+
+// Баланс пока демонстрационный
+let balance = 5000; 
+document.getElementById('balance').innerText = balance + "⭐";
+
+// Кнопки
+document.getElementById('depositBtn').addEventListener('click',()=>alert("Функция пополнения пока не реализована"));
+document.getElementById('withdrawBtn').addEventListener('click',()=>alert("Функция вывода пока не реализована"));
 </script>
 
 </body>
