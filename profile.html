@@ -149,9 +149,10 @@ body {
 <div class="actions">
     <button onclick="window.location.href='popolnenie.html'">💳 Пополнить</button>
     <button onclick="window.location.href='vivod.html'">💸 Вывод</button>
-    <button onclick="alert('Функция добавления кошелька в разработке')">🔗 Добавить кошелёк Telegram</button>
+    <button onclick="connectWallet()">🔗 Добавить кошелёк Telegram</button>
     <button onclick="grantAccess()">⭐ Разрешить доступ к звёздам</button>
 </div>
+
 
 <!-- Нижняя навигация -->
 <div class="bottom-nav">
@@ -179,11 +180,27 @@ if(user){
     document.getElementById("userBalance").innerText = "Баланс: 0 ⭐";
 }
 
+// Проверка кошелька
+function connectWallet() {
+    if(localStorage.getItem("walletConnected") === "true") {
+        tg.showAlert("✅ Кошелёк Telegram уже подключён!");
+    } else {
+        tg.showConfirm("Хотите подключить кошелёк Telegram?", (ok) => {
+            if(ok){
+                localStorage.setItem("walletConnected", "true");
+                tg.showAlert("✅ Кошелёк успешно подключён!");
+                window.open("https://t.me/wallet", "_blank");
+            }
+        });
+    }
+}
+
 // Разрешить доступ
 function grantAccess() {
     tg.showAlert("✅ Доступ к звёздам разрешён!");
 }
 </script>
+
 
 <script>
 // Падающие звёзды
