@@ -3,208 +3,57 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CaseGalaxy - Профиль</title>
+<title>Профиль</title>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
-
-* { box-sizing: border-box; margin:0; padding:0; }
-
 body {
-    font-family: 'Roboto', sans-serif;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+    font-family: Arial, sans-serif;
     background: linear-gradient(to bottom, #0d0d0d, #1a1a2e);
-    color: #fff;
-    overflow-x: hidden;
-    position: relative;
-}
-
-/* Падающие звёзды */
-.star {
-    position: absolute;
-    width: 2px;
-    height: 2px;
-    background: white;
-    border-radius: 50%;
-    animation: fall linear infinite;
-}
-
-@keyframes fall {
-    0% { transform: translateY(-10px); opacity: 1; }
-    100% { transform: translateY(110vh); opacity: 0; }
-}
-
-/* Hero секция */
-.hero {
+    color: white;
     text-align: center;
-    padding: 50px 20px 30px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    z-index: 1;
-    position: relative;
+    padding: 40px;
 }
-
-.hero img {
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-    border: 5px solid rgba(255,255,255,0.3);
-    margin-bottom: 20px;
-    box-shadow: 0 0 60px rgba(255,255,255,0.4), 0 10px 20px rgba(0,0,0,0.4);
-    object-fit: cover;
-    animation: popIn 1s ease forwards;
+.profile-card {
+    background: rgba(255,255,255,0.1);
+    padding: 20px;
+    border-radius: 16px;
+    max-width: 400px;
+    margin: auto;
+    box-shadow: 0 0 20px rgba(255,255,255,0.2);
 }
-
-.hero h2 {
-    font-size: 2rem;
-    font-weight: 700;
+.profile-card h2 {
     margin-bottom: 10px;
 }
-
-.info-box {
-    background: rgba(255,255,255,0.05);
-    padding: 15px 25px;
-    border-radius: 12px;
-    margin-bottom: 20px;
-    width: 90%;
-    max-width: 400px;
-    text-align: left;
-    color: #ccc;
-}
-
-.info-box p { margin-bottom: 8px; }
-
-.profile-buttons {
-    display: flex;
-    justify-content: space-around;
-    width: 90%;
-    max-width: 400px;
-    margin-bottom: 30px;
-}
-
-.profile-buttons button {
-    background: linear-gradient(145deg, #9b30ff, #6a0dad);
-    border: none;
-    border-radius: 12px;
-    padding: 10px 20px;
-    color: #fff;
-    font-weight: 600;
-    cursor: pointer;
-    transition: transform 0.3s, box-shadow 0.5s;
-    flex: 1;
-    margin: 0 5px;
-}
-
-.profile-buttons button:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 8px 15px rgba(255,255,255,0.4);
-    background: linear-gradient(145deg, #b14eff, #7a0dd3);
-}
-
-/* Нижние кнопки навигации */
-.bottom-nav {
-    display: flex;
-    justify-content: space-around;
-    background: rgba(0,0,0,0.2);
-    padding: 20px 0;
-    border-top: 1px solid rgba(255,255,255,0.3);
-    backdrop-filter: blur(10px);
-    z-index: 1;
-    position: relative;
-}
-
-.bottom-nav button {
-    background: linear-gradient(145deg, #9b30ff, #6a0dad);
-    border: none;
-    border-radius: 16px;
-    padding: 12px 18px;
-    color: #fff;
-    font-size: 0.95rem;
-    font-weight: 600;
-    cursor: pointer;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.bottom-nav button span { font-size: 1.5rem; margin-bottom: 5px; }
-
-.bottom-nav button:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 25px rgba(255,255,255,0.5);
-    background: linear-gradient(145deg, #b14eff, #7a0dd3);
-}
-
-/* Анимации */
-@keyframes popIn { from {transform: scale(0); opacity:0;} to {transform: scale(1); opacity:1;} }
-
-@media (max-width: 500px) {
-    .hero img { width: 120px; height: 120px; }
-    .hero h2 { font-size: 1.6rem; }
-    .info-box { font-size: 0.85rem; }
-    .profile-buttons button { padding: 8px; font-size: 0.85rem; }
+.profile-card p {
+    font-size: 1.1rem;
+    margin: 5px 0;
 }
 </style>
 </head>
 <body>
 
-<div class="hero">
-    <img id="avatar" src="https://radika1.link/2025/09/28/ChatGPT-Image-28-SENT.-2025-G.-15_50_30c22794d49f3039c7.png" alt="User Avatar">
-    <h2 id="username">Имя пользователя</h2>
-</div>
-
-<div class="info-box">
-    <p><strong>ID Telegram:</strong> <span id="userId">123456789</span></p>
-    <p><strong>Баланс:</strong> <span id="balance">0⭐</span></p>
-</div>
-
-<div class="profile-buttons">
-    <button id="depositBtn">Пополнить</button>
-    <button id="withdrawBtn">Вывод</button>
-</div>
-
-<div class="bottom-nav">
-    <button><span>🎁</span>Кейсы</button>
-    <button><span>🎮</span>Игры</button>
-    <button><span>📦</span>Прочее</button>
+<div class="profile-card">
+    <h2 id="userName">Имя: ...</h2>
+    <p id="userId">ID: ...</p>
+    <p id="userBalance">Баланс: ... звёзд</p>
 </div>
 
 <script src="https://telegram.org/js/telegram-web-app.js"></script>
 <script>
-// Падающие звёзды
-const starCount = 80;
-for(let i=0;i<starCount;i++){
-    const star = document.createElement('div');
-    star.className = 'star';
-    star.style.left = Math.random()*100+'vw';
-    star.style.top = Math.random()*100+'vh';
-    star.style.width = star.style.height = Math.random()*2+1+'px';
-    star.style.animationDuration = 5 + Math.random()*5 + 's';
-    star.style.opacity = Math.random();
-    document.body.appendChild(star);
-}
+const tg = window.Telegram.WebApp;
+tg.expand();
 
-// Telegram Web App данные
-window.Telegram.WebApp.ready();
-
-const user = window.Telegram.WebApp.initDataUnsafe.user; // получаем данные пользователя
+// Данные от Telegram
+const user = tg.initDataUnsafe.user;
 
 if(user){
-    document.getElementById('username').innerText = user.first_name + (user.last_name ? " " + user.last_name : "");
-    document.getElementById('userId').innerText = user.id;
-    document.getElementById('avatar').src = user.photo_url || "https://radika1.link/2025/09/28/ChatGPT-Image-28-SENT.-2025-G.-15_50_30c22794d49f3039c7.png";
+    document.getElementById("userName").innerText = "Имя: " + (user.first_name || "Неизвестно");
+    document.getElementById("userId").innerText = "ID: " + user.id;
+    document.getElementById("userBalance").innerText = "Баланс: " + (Math.floor(Math.random()*500)+50) + " ⭐"; // тут пока фейк баланс
+} else {
+    document.getElementById("userName").innerText = "Имя: Гость";
+    document.getElementById("userId").innerText = "ID: ---";
+    document.getElementById("userBalance").innerText = "Баланс: 0 ⭐";
 }
-
-// Баланс пока демонстрационный
-let balance = 5000; 
-document.getElementById('balance').innerText = balance + "⭐";
-
-// Кнопки
-document.getElementById('depositBtn').addEventListener('click',()=>alert("Функция пополнения пока не реализована"));
-document.getElementById('withdrawBtn').addEventListener('click',()=>alert("Функция вывода пока не реализована"));
 </script>
 
 </body>
