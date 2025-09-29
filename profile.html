@@ -19,7 +19,7 @@ body {
     color: #fff;
     overflow-x: hidden;
     position: relative;
-    text-align: center;
+    padding-bottom: 100px;
 }
 
 /* Падающие звёзды */
@@ -31,6 +31,7 @@ body {
     border-radius: 50%;
     animation: fall linear infinite;
 }
+
 @keyframes fall {
     0% { transform: translateY(-10px); opacity: 1; }
     100% { transform: translateY(110vh); opacity: 0; }
@@ -39,29 +40,56 @@ body {
 /* Карточка профиля */
 .profile-card {
     background: rgba(255,255,255,0.05);
-    padding: 30px;
-    border-radius: 20px;
+    padding: 20px;
+    border-radius: 16px;
     max-width: 400px;
-    margin: 80px auto 30px;
-    box-shadow: 0 0 25px rgba(255,255,255,0.2);
+    margin: 40px auto 20px;
+    box-shadow: 0 0 20px rgba(255,255,255,0.2);
+    text-align: center;
     z-index: 1;
-    position: relative;
-    animation: popIn 1s ease forwards;
-}
-.profile-card h2 {
-    font-size: 1.8rem;
-    margin-bottom: 10px;
-    background: linear-gradient(90deg, #ffb6c1, #8a2be2);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
-.profile-card p {
-    font-size: 1.1rem;
-    margin: 8px 0;
-    color: rgba(255,255,255,0.9);
 }
 
-/* Нижние кнопки */
+.profile-card h2 {
+    margin-bottom: 10px;
+    font-size: 1.8rem;
+}
+
+.profile-card p {
+    font-size: 1rem;
+    margin: 6px 0;
+    color: #ccc;
+}
+
+/* Кнопки действий */
+.actions {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    max-width: 350px;
+    margin: 0 auto;
+    z-index: 1;
+}
+
+.actions button {
+    background: linear-gradient(145deg, #9b30ff, #6a0dad);
+    border: none;
+    border-radius: 12px;
+    padding: 14px;
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.6s, background 1.5s;
+    box-shadow: 0 0 15px rgba(255,255,255,0.1);
+}
+
+.actions button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(255,255,255,0.5);
+    background: linear-gradient(145deg, #b14eff, #7a0dd3);
+}
+
+/* Нижняя навигация */
 .bottom-nav {
     display: flex;
     justify-content: space-around;
@@ -69,16 +97,19 @@ body {
     padding: 20px 0;
     border-top: 1px solid rgba(255,255,255,0.3);
     backdrop-filter: blur(10px);
-    z-index: 1;
-    position: relative;
+    z-index: 2;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
 }
+
 .bottom-nav button {
     background: linear-gradient(145deg, #9b30ff, #6a0dad);
     border: none;
     border-radius: 16px;
-    padding: 15px 25px;
+    padding: 10px 15px;
     color: #fff;
-    font-size: 1rem;
+    font-size: 0.9rem;
     font-weight: 600;
     cursor: pointer;
     transition: transform 0.3s, box-shadow 0.6s, background 1.5s;
@@ -87,24 +118,23 @@ body {
     align-items: center;
     box-shadow: 0 0 15px rgba(255,255,255,0.1);
 }
+
 .bottom-nav button span {
-    font-size: 1.8rem;
-    margin-bottom: 5px;
+    font-size: 1.6rem;
+    margin-bottom: 3px;
 }
+
 .bottom-nav button:hover {
-    transform: translateY(-5px);
+    transform: translateY(-3px);
     box-shadow: 0 10px 25px rgba(255,255,255,0.5);
     background: linear-gradient(145deg, #b14eff, #7a0dd3);
 }
 
-/* Анимации */
-@keyframes popIn { from {transform: scale(0); opacity:0;} to {transform: scale(1); opacity:1;} }
-
+/* Адаптив */
 @media (max-width: 500px) {
-    .profile-card { padding: 20px; margin: 50px auto; }
-    .profile-card h2 { font-size: 1.4rem; }
-    .profile-card p { font-size: 1rem; }
-    .bottom-nav button { padding: 12px 18px; font-size: 0.9rem; }
+    .profile-card h2 { font-size: 1.5rem; }
+    .profile-card p { font-size: 0.9rem; }
+    .actions button { font-size: 0.9rem; padding: 12px; }
 }
 </style>
 </head>
@@ -116,14 +146,45 @@ body {
     <p id="userBalance">Баланс: ... ⭐</p>
 </div>
 
+<div class="actions">
+    <button onclick="window.location.href='popolnenie.html'">💳 Пополнить</button>
+    <button onclick="window.location.href='vivod.html'">💸 Вывод</button>
+    <button onclick="alert('Функция добавления кошелька в разработке')">🔗 Добавить кошелёк Telegram</button>
+    <button onclick="grantAccess()">⭐ Разрешить доступ к звёздам</button>
+</div>
+
+<!-- Нижняя навигация -->
 <div class="bottom-nav">
-    <button onclick="location.href='index.html'"><span>🏠</span>Главная</button>
-    <button onclick="location.href='cases.html'"><span>🎁</span>Кейсы</button>
-    <button onclick="location.href='games.html'"><span>🎮</span>Игры</button>
-    <button onclick="location.href='other.html'"><span>📦</span>Прочее</button>
+    <button onclick="window.location.href='cases.html'"><span>🎁</span>Кейсы</button>
+    <button onclick="window.location.href='index.html'"><span></span>Главная</button>
+    <button onclick="window.location.href='games.html'"><span>🎮</span>Игры</button>
+    <button onclick="window.location.href='other.html'"><span>📦</span>Прочее</button>
 </div>
 
 <script src="https://telegram.org/js/telegram-web-app.js"></script>
+<script>
+const tg = window.Telegram.WebApp;
+tg.expand();
+
+// Данные от Telegram
+const user = tg.initDataUnsafe.user;
+
+if(user){
+    document.getElementById("userName").innerText = "Имя: " + (user.first_name || "Неизвестно");
+    document.getElementById("userId").innerText = "ID: " + user.id;
+    document.getElementById("userBalance").innerText = "Баланс: " + (Math.floor(Math.random()*500)+50) + " ⭐"; 
+} else {
+    document.getElementById("userName").innerText = "Имя: Гость";
+    document.getElementById("userId").innerText = "ID: ---";
+    document.getElementById("userBalance").innerText = "Баланс: 0 ⭐";
+}
+
+// Разрешить доступ
+function grantAccess() {
+    tg.showAlert("✅ Доступ к звёздам разрешён!");
+}
+</script>
+
 <script>
 // Падающие звёзды
 const starCount = 80;
@@ -136,21 +197,6 @@ for(let i=0;i<starCount;i++){
     star.style.animationDuration = 5 + Math.random()*5 + 's';
     star.style.opacity = Math.random();
     document.body.appendChild(star);
-}
-
-// Telegram WebApp данные
-const tg = window.Telegram.WebApp;
-tg.expand();
-const user = tg.initDataUnsafe.user;
-
-if(user){
-    document.getElementById("userName").innerText = "Имя: " + (user.first_name || "Неизвестно");
-    document.getElementById("userId").innerText = "ID: " + user.id;
-    document.getElementById("userBalance").innerText = "Баланс: " + (Math.floor(Math.random()*500)+50) + " ⭐";
-} else {
-    document.getElementById("userName").innerText = "Имя: Гость";
-    document.getElementById("userId").innerText = "ID: ---";
-    document.getElementById("userBalance").innerText = "Баланс: 0 ⭐";
 }
 </script>
 
