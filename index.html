@@ -417,98 +417,12 @@
             background-clip: text;
         }
 
-        /* Balance Display */
-        .balance-info {
-            position: relative;
-            display: inline-block;
-        }
-
-        .balance-tooltip {
-            position: absolute;
-            bottom: 100%;
-            left: 50%;
-            transform: translateX(-50%);
-            background: var(--dark-2);
-            color: var(--text-white);
-            padding: 8px 15px;
-            border-radius: var(--border-radius-sm);
-            font-size: 0.8rem;
-            white-space: nowrap;
-            opacity: 0;
-            visibility: hidden;
-            transition: var(--transition-fast);
-            border: 2px solid var(--neon-blue);
-            box-shadow: var(--glow-blue);
-            z-index: 1001;
-            margin-bottom: 8px;
-            pointer-events: none;
-        }
-
-        .balance-info:hover .balance-tooltip {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        /* Header Actions */
+        /* Header Actions - БЕЗ БАЛАНСА */
         .header-actions {
             display: flex;
             gap: 15px;
             align-items: center;
             flex-shrink: 0;
-        }
-
-        .balance-display {
-            background: rgba(0, 243, 255, 0.15);
-            border: 2px solid rgba(0, 243, 255, 0.4);
-            border-radius: var(--border-radius);
-            padding: 10px 18px;
-            font-family: 'Orbitron', sans-serif;
-            font-weight: 900;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            box-shadow: 0 0 20px rgba(0, 243, 255, 0.3);
-            animation: balance-pulse 5s ease-in-out infinite;
-            min-width: 150px;
-            transition: var(--transition-bounce);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .balance-display::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, 
-                transparent 0%,
-                rgba(255, 255, 255, 0.15) 50%,
-                transparent 100%);
-            transition: left 0.8s ease;
-        }
-
-        .balance-display:hover::before {
-            left: 100%;
-        }
-
-        .balance-display:hover {
-            transform: translateY(-5px) scale(1.05);
-            box-shadow: 0 0 40px rgba(0, 243, 255, 0.5);
-            background: rgba(0, 243, 255, 0.2);
-        }
-
-        .balance-amount {
-            color: var(--neon-blue);
-            font-size: 1.1rem;
-            white-space: nowrap;
-            transition: var(--transition-fast);
-        }
-
-        .balance-display:hover .balance-amount {
-            color: var(--neon-green);
-            text-shadow: 0 0 15px rgba(0, 255, 136, 0.6);
         }
 
         .header-btn {
@@ -643,7 +557,7 @@
             box-shadow: 0 0 25px rgba(0, 243, 255, 0.4);
         }
 
-        /* Mobile Navigation */
+        /* Mobile Navigation - БЕЗ БАЛАНСА */
         .mobile-nav {
             position: fixed;
             top: 0;
@@ -705,7 +619,7 @@
             box-shadow: var(--glow-blue);
         }
 
-        /* ===== HERO SECTION - ИСПРАВЛЕНА! ===== */
+        /* ===== HERO SECTION ===== */
         .hero {
             padding: 140px 0 80px;
             position: relative;
@@ -1926,11 +1840,6 @@
                 flex-direction: column;
                 gap: 15px;
             }
-            
-            .mobile-nav .balance-display {
-                display: flex;
-                margin: 20px 0;
-            }
         }
 
         @media (max-width: 576px) {
@@ -2103,17 +2012,8 @@
                 <div class="logo-text">DUDE SPIN</div>
             </a>
             
-            <!-- Header Actions -->
+            <!-- Header Actions БЕЗ БАЛАНСА -->
             <div class="header-actions">
-                <div class="">
-                    <div class="">
-                        <i class=""></i>
-                        <span class="balance-amount"></span>
-                    </div>
-                    <div class="balance-tooltip">
-                        
-                    </div>
-                </div>
                 <a href="https://dudespin1.com" class="header-btn header-btn-deposit" target="_blank">
                     <i class="fas fa-plus"></i> Deposit
                 </a>
@@ -2134,7 +2034,7 @@
         <i class="fas fa-home"></i>
     </a>
 
-    <!-- Mobile Navigation -->
+    <!-- Mobile Navigation БЕЗ БАЛАНСА -->
     <div class="mobile-nav" id="mobileNav">
         <a href="#home" class="active">
             <i class="fas fa-home"></i> Home
@@ -2157,15 +2057,6 @@
         <a href="#bonuses">
             <i class="fas fa-gift"></i> Bonuses
         </a>
-        <div class="">
-            <div class="">
-                <i class=""></i>
-                <span class="balance-amount"></span>
-            </div>
-            <div class="balance-tooltip">
-                
-            </div>
-        </div>
         <a href="https://dudespin1.com" class="header-btn header-btn-deposit" target="_blank">
             <i class="fas fa-plus"></i> Deposit
         </a>
@@ -2174,11 +2065,11 @@
         </a>
     </div>
 
-    <!-- ===== ИСПРАВЛЕННАЯ HERO СЕКЦИЯ ===== -->
+    <!-- Hero Section -->
     <section class="hero" id="home">
         <div class="container hero-content">
             <div class="hero-text">
-                <h1 class="fade-in">CRYPTO CASINO</h1>
+                <h1 class="fade-in">ULTIMATE CRYPTO CASINO</h1>
                 <p class="hero-subtitle fade-in stagger-1">Experience the future of online gambling with 5000+ games, instant crypto withdrawals, and anonymous betting. Join the revolution!</p>
                 
                 <div class="hero-actions">
@@ -2965,9 +2856,6 @@
             // Initialize jackpot timer
             initJackpotTimer();
             
-            // Initialize live balance simulation
-            initLiveBalance();
-            
             // Initialize game card animations
             initGameCardAnimations();
             
@@ -3163,35 +3051,6 @@
             
             updateTimer();
             setInterval(updateTimer, 1000);
-        }
-        
-        // ===== LIVE BALANCE SIMULATION =====
-        function initLiveBalance() {
-            const balanceElements = document.querySelectorAll('.balance-amount');
-            if (!balanceElements.length) return;
-            
-            let balance = 18427.65;
-            
-            setInterval(() => {
-                // Random change
-                const change = (Math.random() - 0.5) * 200;
-                balance += change;
-                
-                // Format and update
-                const formattedBalance = `$${balance.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ',')}`;
-                
-                balanceElements.forEach(element => {
-                    element.textContent = formattedBalance;
-                    
-                    // Color animation
-                    if (Math.abs(change) > 80) {
-                        element.style.color = change > 0 ? 'var(--neon-green)' : 'var(--neon-red)';
-                        setTimeout(() => {
-                            element.style.color = 'var(--neon-blue)';
-                        }, 1000);
-                    }
-                });
-            }, 5000);
         }
         
         // ===== GAME CARD ANIMATIONS =====
