@@ -203,8 +203,9 @@
             letter-spacing: 1.5px;
         }
 
+        /* ===== ИСПРАВЛЕННЫЙ H1 - НЕ ОБРЕЗАЕТСЯ НА МОБИЛКЕ ===== */
         h1 {
-            font-size: 4rem;
+            font-size: 3.5rem;
             background: var(--gradient-rainbow);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -212,6 +213,11 @@
             margin-bottom: 1.5rem;
             text-shadow: 0 0 40px rgba(0, 243, 255, 0.4);
             animation: text-glow 4s ease-in-out infinite alternate;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            hyphens: auto;
+            display: block;
+            width: 100%;
         }
 
         h2 {
@@ -619,7 +625,7 @@
             box-shadow: var(--glow-blue);
         }
 
-        /* ===== HERO SECTION ===== */
+        /* ===== HERO SECTION - ИСПРАВЛЕНА! ===== */
         .hero {
             padding: 140px 0 80px;
             position: relative;
@@ -841,699 +847,6 @@
             font-size: 1.1rem;
         }
 
-        /* Steps Section */
-        .steps-section {
-            padding: 60px 0;
-            background: radial-gradient(ellipse at center, rgba(0, 255, 136, 0.15) 0%, transparent 70%);
-        }
-
-        .steps-container {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            margin-top: 40px;
-            flex-wrap: wrap;
-        }
-
-        .step-card {
-            background: var(--card-bg);
-            border-radius: var(--border-radius-xl);
-            padding: 25px 20px;
-            text-align: center;
-            border: 2px solid rgba(0, 255, 136, 0.25);
-            transition: var(--transition-bounce);
-            flex: 1;
-            min-width: 250px;
-            max-width: 300px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .step-card:hover {
-            transform: translateY(-12px);
-            border-color: var(--neon-green);
-            box-shadow: var(--glow-green);
-        }
-
-        .step-number {
-            width: 60px;
-            height: 60px;
-            background: var(--gradient-green);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 20px;
-            font-family: 'Orbitron', sans-serif;
-            font-size: 2rem;
-            font-weight: 900;
-            color: var(--dark-1);
-            box-shadow: var(--glow-green);
-        }
-
-        .step-title {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 1.5rem;
-            color: var(--text-white);
-            margin-bottom: 15px;
-        }
-
-        .step-description {
-            color: var(--text-gray);
-            font-size: 1rem;
-        }
-
-        /* Advantages Section */
-        .advantages-section {
-            padding: 60px 0;
-            background: radial-gradient(ellipse at center, rgba(255, 215, 0, 0.15) 0%, transparent 70%);
-        }
-
-        .advantages-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 20px;
-            margin-top: 40px;
-        }
-
-        .advantage-card {
-            background: var(--card-bg);
-            border-radius: var(--border-radius-lg);
-            padding: 25px 20px;
-            display: flex;
-            align-items: flex-start;
-            gap: 15px;
-            border: 2px solid rgba(255, 215, 0, 0.25);
-            transition: var(--transition-bounce);
-            backdrop-filter: blur(15px);
-        }
-
-        .advantage-card:hover {
-            transform: translateY(-10px);
-            border-color: var(--neon-yellow);
-            box-shadow: var(--glow-gold);
-        }
-
-        .advantage-icon {
-            width: 55px;
-            height: 55px;
-            background: var(--gradient-gold);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.8rem;
-            color: var(--dark-1);
-            flex-shrink: 0;
-        }
-
-        .advantage-content h4 {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 1.3rem;
-            color: var(--text-white);
-            margin-bottom: 10px;
-        }
-
-        /* Content Sections */
-        .content-sections {
-            padding: 60px 0;
-        }
-
-        .content-section {
-            margin-bottom: 60px;
-        }
-
-        .content-section:last-child {
-            margin-bottom: 0;
-        }
-
-        .content-card {
-            background: var(--card-bg);
-            border-radius: var(--border-radius-xl);
-            padding: 40px 30px;
-            border: 2px solid rgba(0, 243, 255, 0.25);
-            backdrop-filter: blur(15px);
-            transition: var(--transition-normal);
-        }
-
-        .content-card:hover {
-            border-color: var(--neon-blue);
-            box-shadow: var(--glow-blue);
-        }
-
-        /* FAQ Section */
-        .faq-section {
-            padding: 60px 0;
-            background: radial-gradient(ellipse at center, rgba(255, 0, 85, 0.15) 0%, transparent 70%);
-        }
-
-        .faq-container {
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-
-        .faq-item {
-            background: var(--card-bg);
-            border-radius: var(--border-radius-lg);
-            margin-bottom: 15px;
-            border: 2px solid rgba(255, 0, 85, 0.25);
-            overflow: hidden;
-            transition: var(--transition-fast);
-        }
-
-        .faq-item.active {
-            border-color: var(--neon-red);
-            box-shadow: var(--glow-red);
-        }
-
-        .faq-question {
-            padding: 20px 25px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            cursor: pointer;
-            transition: var(--transition-fast);
-        }
-
-        .faq-question:hover {
-            background: rgba(255, 0, 85, 0.08);
-        }
-
-        .faq-question h4 {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 1.2rem;
-            color: var(--text-white);
-            margin: 0;
-        }
-
-        .faq-icon {
-            color: var(--neon-red);
-            font-size: 1.5rem;
-            transition: transform 0.4s ease;
-        }
-
-        .faq-item.active .faq-icon {
-            transform: rotate(45deg);
-        }
-
-        .faq-answer {
-            padding: 0 25px;
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.4s ease, padding 0.4s ease;
-        }
-
-        .faq-item.active .faq-answer {
-            padding: 0 25px 20px;
-            max-height: 600px;
-        }
-
-        /* Big CTA Section */
-        .big-cta-section {
-            padding: 80px 0;
-            text-align: center;
-            background: radial-gradient(ellipse at center, rgba(0, 243, 255, 0.2) 0%, transparent 70%);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .big-cta-content {
-            position: relative;
-            z-index: 2;
-        }
-
-        .big-cta-title {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 3rem;
-            font-weight: 900;
-            background: var(--gradient-rainbow);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 25px;
-            animation: text-glow 4s ease-in-out infinite alternate;
-        }
-
-        .big-cta-subtitle {
-            font-size: 1.5rem;
-            color: var(--text-light);
-            margin-bottom: 40px;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .big-cta-buttons {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-            align-items: center;
-        }
-
-        /* Games Section */
-        .games-section {
-            padding: 80px 0;
-            position: relative;
-        }
-
-        .section-header {
-            text-align: center;
-            margin-bottom: 40px;
-        }
-
-        .section-subtitle {
-            text-align: center;
-            max-width: 900px;
-            margin: 0 auto 60px;
-            font-size: 1.3rem;
-            color: var(--text-gray);
-            font-weight: 400;
-        }
-
-        /* Game Filters */
-        .game-filters {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            margin-bottom: 40px;
-            flex-wrap: wrap;
-            padding: 0 15px;
-        }
-
-        .filter-btn {
-            padding: 12px 20px;
-            background: var(--glass-bg);
-            border: 2px solid var(--glass-border);
-            border-radius: var(--border-radius);
-            color: var(--text-gray);
-            font-family: 'Orbitron', sans-serif;
-            font-weight: 800;
-            font-size: 1rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            cursor: pointer;
-            transition: var(--transition-bounce);
-            position: relative;
-            overflow: hidden;
-            white-space: nowrap;
-        }
-
-        .filter-btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(0, 243, 255, 0.25), transparent);
-            transition: left 0.7s ease;
-        }
-
-        .filter-btn:hover::before {
-            left: 100%;
-        }
-
-        .filter-btn.active {
-            background: var(--gradient-cyan);
-            color: var(--dark-1);
-            box-shadow: var(--glow-blue);
-            border-color: transparent;
-            transform: translateY(-5px);
-        }
-
-        .filter-btn:hover:not(.active) {
-            background: rgba(255, 255, 255, 0.15);
-            transform: translateY(-5px);
-            color: var(--neon-blue);
-        }
-
-        /* Games Grid */
-        .games-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 30px;
-            margin-bottom: 60px;
-        }
-
-        /* Game Card */
-        .game-card {
-            background: var(--card-bg);
-            border-radius: var(--border-radius-xl);
-            overflow: hidden;
-            border: 2px solid var(--card-border);
-            transition: var(--transition-normal);
-            position: relative;
-            transform-style: preserve-3d;
-            perspective: 1500px;
-            backdrop-filter: blur(20px);
-            box-shadow: var(--shadow-medium);
-            animation: card-enter 0.8s ease-out backwards;
-        }
-
-        .game-card:nth-child(1) { animation-delay: 0.1s; }
-        .game-card:nth-child(2) { animation-delay: 0.2s; }
-        .game-card:nth-child(3) { animation-delay: 0.3s; }
-        .game-card:nth-child(4) { animation-delay: 0.4s; }
-        .game-card:nth-child(5) { animation-delay: 0.5s; }
-        .game-card:nth-child(6) { animation-delay: 0.6s; }
-
-        .game-card:hover {
-            transform: translateY(-15px) rotateX(8deg);
-            box-shadow: var(--shadow-heavy), var(--glow-blue);
-            border-color: var(--neon-blue);
-        }
-
-        /* Game Badges */
-        .game-badge {
-            position: absolute;
-            top: 15px;
-            left: 15px;
-            padding: 8px 15px;
-            border-radius: 20px;
-            font-family: 'Orbitron', sans-serif;
-            font-weight: 900;
-            font-size: 0.8rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            z-index: 2;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
-            animation: badge-float 4s ease-in-out infinite;
-        }
-
-        .badge-new {
-            background: var(--gradient-green);
-            color: var(--dark-1);
-        }
-
-        .badge-hot {
-            background: var(--gradient-red);
-            color: white;
-        }
-
-        .badge-top {
-            background: var(--gradient-gold);
-            color: var(--dark-1);
-        }
-
-        .badge-jackpot {
-            background: linear-gradient(135deg, #ff0000 0%, #ffaa00 50%, #ffff00 100%);
-            color: white;
-            animation: jackpot-pulse 2.5s infinite;
-        }
-
-        .badge-live {
-            background: var(--gradient-purple);
-            color: white;
-            animation: live-pulse 2s infinite;
-        }
-
-        /* Game Image */
-        .game-image-container {
-            position: relative;
-            width: 100%;
-            height: 200px;
-            overflow: hidden;
-        }
-
-        .game-image {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 1.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
-
-        .game-card:hover .game-image {
-            transform: scale(1.15) rotate(3deg);
-        }
-
-        /* Game Info */
-        .game-info {
-            padding: 25px;
-        }
-
-        .game-title {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 1.4rem;
-            font-weight: 900;
-            margin-bottom: 10px;
-            color: white;
-        }
-
-        .game-provider {
-            color: var(--neon-blue);
-            font-size: 0.9rem;
-            font-weight: 800;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 15px;
-            display: block;
-        }
-
-        .game-description {
-            color: var(--text-gray);
-            font-size: 1rem;
-            margin-bottom: 20px;
-            line-height: 1.6;
-        }
-
-        /* Game Stats */
-        .game-stats {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 20px;
-            background: rgba(255, 255, 255, 0.08);
-            padding: 15px;
-            border-radius: var(--border-radius-sm);
-            backdrop-filter: blur(15px);
-        }
-
-        .game-stat {
-            text-align: center;
-            flex: 1;
-        }
-
-        .stat-name {
-            display: block;
-            font-size: 0.8rem;
-            color: var(--text-gray);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 5px;
-        }
-
-        .stat-value {
-            font-family: 'Orbitron', sans-serif;
-            font-weight: 900;
-            color: var(--neon-blue);
-            font-size: 1.1rem;
-        }
-
-        /* Play Button */
-        .play-button {
-            width: 100%;
-            padding: 16px;
-            background: var(--gradient-cyan);
-            border: none;
-            border-radius: var(--border-radius);
-            color: var(--dark-1);
-            font-family: 'Orbitron', sans-serif;
-            font-weight: 900;
-            font-size: 1rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            cursor: pointer;
-            transition: var(--transition-bounce);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .play-button::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.5), transparent);
-            transition: left 0.8s ease;
-        }
-
-        .play-button:hover::before {
-            left: 100%;
-        }
-
-        .play-button:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--glow-blue);
-        }
-
-        /* Jackpot Section */
-        .jackpot-section {
-            padding: 60px 0;
-            text-align: center;
-            position: relative;
-            background: radial-gradient(ellipse at center, rgba(255, 215, 0, 0.2) 0%, transparent 70%);
-        }
-
-        .jackpot-amount {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 4rem;
-            font-weight: 900;
-            background: var(--gradient-gold);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 25px;
-            text-shadow: 0 0 80px rgba(255, 215, 0, 0.6);
-            animation: jackpot-glow 3s ease-in-out infinite alternate;
-        }
-
-        /* Bonuses Section */
-        .bonuses-section {
-            padding: 60px 0;
-            background: radial-gradient(ellipse at center, rgba(0, 255, 136, 0.15) 0%, transparent 70%);
-        }
-
-        .bonuses-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 30px;
-        }
-
-        /* Footer */
-        footer {
-            background: var(--dark-2);
-            padding: 80px 0 30px;
-            border-top: 2px solid rgba(0, 243, 255, 0.15);
-            position: relative;
-        }
-
-        .footer-content {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 50px;
-            margin-bottom: 50px;
-        }
-
-        .footer-logo {
-            font-family: 'Orbitron', sans-serif;
-            font-weight: 900;
-            font-size: 2.2rem;
-            background: var(--gradient-cyan);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 25px;
-            display: block;
-        }
-
-        .footer-description {
-            color: var(--text-gray);
-            margin-bottom: 30px;
-            font-size: 1rem;
-        }
-
-        .social-links {
-            display: flex;
-            gap: 15px;
-        }
-
-        .social-link {
-            width: 45px;
-            height: 45px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.08);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--text-white);
-            font-size: 1.2rem;
-            transition: var(--transition-bounce);
-            border: 2px solid rgba(255, 255, 255, 0.15);
-        }
-
-        .social-link:hover {
-            background: var(--gradient-cyan);
-            color: var(--dark-1);
-            transform: translateY(-8px);
-            box-shadow: var(--glow-blue);
-        }
-
-        .footer-links {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 40px;
-        }
-
-        .links-group h4 {
-            font-size: 1.2rem;
-            margin-bottom: 20px;
-            color: white;
-            font-family: 'Orbitron', sans-serif;
-        }
-
-        .links-group ul {
-            list-style: none;
-        }
-
-        .links-group li {
-            margin-bottom: 15px;
-        }
-
-        .links-group a {
-            color: var(--text-gray);
-            text-decoration: none;
-            transition: var(--transition-fast);
-            display: inline-block;
-            font-size: 0.95rem;
-        }
-
-        .links-group a:hover {
-            color: var(--neon-blue);
-            transform: translateX(8px);
-        }
-
-        .payment-methods {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin-top: 40px;
-            flex-wrap: wrap;
-        }
-
-        .payment-method {
-            width: 60px;
-            height: 45px;
-            background: white;
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.8rem;
-            color: var(--dark-1);
-            transition: var(--transition-bounce);
-        }
-
-        .payment-method:hover {
-            transform: translateY(-8px) scale(1.1);
-            box-shadow: var(--glow-blue);
-        }
-
-        .footer-bottom {
-            text-align: center;
-            padding-top: 40px;
-            border-top: 2px solid rgba(255, 255, 255, 0.15);
-            color: var(--text-gray);
-            font-size: 0.9rem;
-        }
-
         /* ===== ANIMATIONS ===== */
         @keyframes spin-logo {
             from { transform: rotate(0deg); }
@@ -1643,7 +956,7 @@
         /* ===== RESPONSIVE DESIGN ===== */
         @media (min-width: 768px) {
             h1 {
-                font-size: 5rem;
+                font-size: 4.5rem;
             }
             
             h2 {
@@ -1713,7 +1026,7 @@
 
         @media (min-width: 992px) {
             h1 {
-                font-size: 6rem;
+                font-size: 5.5rem;
             }
             
             h2 {
@@ -1758,6 +1071,10 @@
         }
 
         @media (min-width: 1200px) {
+            h1 {
+                font-size: 6.5rem;
+            }
+            
             .hero-content {
                 gap: 100px;
             }
@@ -1843,9 +1160,12 @@
         }
 
         @media (max-width: 576px) {
+            /* ===== ИСПРАВЛЕННЫЙ H1 ДЛЯ МОБИЛОК ===== */
             h1 {
-                font-size: 3rem;
+                font-size: 2.8rem;
                 letter-spacing: 1px;
+                line-height: 1.2;
+                margin-bottom: 1.2rem;
             }
             
             h2 {
@@ -1941,8 +1261,11 @@
         }
 
         @media (max-width: 400px) {
+            /* ===== ДОПОЛНИТЕЛЬНОЕ УМЕНЬШЕНИЕ H1 ДЛЯ САМЫХ МАЛЕНЬКИХ ЭКРАНОВ ===== */
             h1 {
-                font-size: 2.5rem;
+                font-size: 2.3rem;
+                letter-spacing: 0.8px;
+                line-height: 1.15;
             }
             
             .hero-actions .btn {
@@ -1958,6 +1281,14 @@
             .game-card,
             .bonus-card {
                 max-width: 100%;
+            }
+        }
+
+        @media (max-width: 350px) {
+            /* ===== МИНИМАЛЬНЫЙ РАЗМЕР H1 ===== */
+            h1 {
+                font-size: 2rem;
+                letter-spacing: 0.5px;
             }
         }
 
@@ -2009,7 +1340,7 @@
             <a href="#home" class="logo">
                 <img src="https://dudespin1.com/cfr/15159469d61dbe8/p/29-12-2025-12-08-25-6d48e1e7/assets/images/logo.png" 
                      alt="DUDE SPIN" class="logo-image">
-                <div class="logo-text"></div>
+                <div class="logo-text">DUDE SPIN</div>
             </a>
             
             <!-- Header Actions БЕЗ БАЛАНСА -->
@@ -2065,11 +1396,11 @@
         </a>
     </div>
 
-    <!-- Hero Section -->
+    <!-- ===== ИСПРАВЛЕННАЯ HERO СЕКЦИЯ ===== -->
     <section class="hero" id="home">
         <div class="container hero-content">
             <div class="hero-text">
-                <h1 class="fade-in">     CASINO</h1>
+                <h1 class="fade-in">ULTIMATE CRYPTO CASINO</h1>
                 <p class="hero-subtitle fade-in stagger-1">Experience the future of online gambling with 5000+ games, instant crypto withdrawals, and anonymous betting. Join the revolution!</p>
                 
                 <div class="hero-actions">
@@ -2167,7 +1498,6 @@
             </div>
         </div>
     </section>
-
     <!-- Table Section -->
     <section class="table-section">
         <div class="container">
