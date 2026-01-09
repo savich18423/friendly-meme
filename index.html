@@ -89,7 +89,7 @@
 
         html {
             scroll-behavior: smooth;
-            scroll-padding-top: 80px;
+            scroll-padding-top: 100px; /* Увеличили для iPhone */
         }
 
         body {
@@ -100,6 +100,7 @@
             line-height: 1.7;
             min-height: 100vh;
             position: relative;
+            padding-top: 0; /* Убрали лишний отступ */
         }
 
         /* Background Effects */
@@ -348,7 +349,7 @@
             box-shadow: var(--glow-white);
         }
 
-        /* Header */
+        /* Header - FIX FOR IPHONE */
         header {
             position: fixed;
             top: 0;
@@ -360,6 +361,10 @@
             z-index: 1000;
             padding: 15px 0;
             transition: var(--transition-normal);
+            /* Исправление для iPhone */
+            -webkit-backdrop-filter: blur(30px);
+            height: auto;
+            min-height: 70px;
         }
 
         header.scrolled {
@@ -373,6 +378,7 @@
             justify-content: space-between;
             align-items: center;
             gap: 20px;
+            height: 100%;
         }
 
         /* Logo */
@@ -619,12 +625,21 @@
             box-shadow: var(--glow-blue);
         }
 
-        /* ===== HERO SECTION ===== */
+        /* ===== HERO SECTION - FIX FOR IPHONE ===== */
         .hero {
             padding: 140px 0 80px;
             position: relative;
             overflow: hidden;
             min-height: auto;
+            /* Исправление для iPhone */
+            padding-top: 120px !important;
+            margin-top: 0;
+        }
+
+        @media (max-width: 767px) {
+            .hero {
+                padding-top: 110px !important;
+            }
         }
 
         .hero-content {
@@ -1882,6 +1897,7 @@
             
             .hero {
                 padding: 100px 0 40px;
+                padding-top: 100px !important;
             }
             
             .hero-subtitle {
@@ -2010,6 +2026,7 @@
             
             .hero {
                 padding: 90px 0 30px;
+                padding-top: 90px !important;
             }
             
             .big-cta-title {
@@ -2019,6 +2036,24 @@
             .hero-subtitle {
                 font-size: 0.95rem;
                 line-height: 1.5;
+            }
+        }
+
+        /* iPhone-specific fixes */
+        @supports (-webkit-touch-callout: none) {
+            header {
+                height: 80px;
+                padding: 10px 0;
+            }
+            
+            .hero {
+                padding-top: 100px !important;
+            }
+            
+            @media (max-width: 767px) {
+                .hero {
+                    padding-top: 90px !important;
+                }
             }
         }
 
@@ -2075,10 +2110,10 @@
             
             <!-- Header Actions БЕЗ БАЛАНСА -->
             <div class="header-actions">
-                <a href="https://dudespin1.com" class="header-btn header-btn-deposit" target="_blank">
+                <a href="#" class="header-btn header-btn-deposit">
                     <i class="fas fa-plus"></i> Deposit
                 </a>
-                <a href="https://dudespin1.com" class="header-btn header-btn-login" target="_blank">
+                <a href="#" class="header-btn header-btn-login">
                     <i class="fas fa-user"></i> Login
                 </a>
             </div>
@@ -2118,10 +2153,10 @@
         <a href="#bonuses">
             <i class="fas fa-gift"></i> Bonuses
         </a>
-        <a href="https://dudespin1.com" class="header-btn header-btn-deposit" target="_blank">
+        <a href="#" class="header-btn header-btn-deposit">
             <i class="fas fa-plus"></i> Deposit
         </a>
-        <a href="https://dudespin1.com" class="header-btn header-btn-login" target="_blank">
+        <a href="#" class="header-btn header-btn-login">
             <i class="fas fa-user"></i> Login
         </a>
     </div>
@@ -2138,7 +2173,7 @@
                 <p class="hero-subtitle fade-in stagger-1">Experience the future of online gambling with 5000+ games, instant crypto withdrawals, and anonymous betting. Join the revolution!</p>
                 
                 <div class="hero-actions">
-                    <a href="https://dudespin1.com" class="btn fade-in stagger-3" target="_blank">
+                    <a href="#" class="btn fade-in stagger-3">
                         <i class="fas fa-user-plus"></i> Sign Up Now
                     </a>
                     <a href="#games" class="btn btn-gold fade-in stagger-4">
@@ -2531,7 +2566,7 @@
                                 <span class="stat-value">x10,000</span>
                             </div>
                         </div>
-                        <button class="play-button" onclick="window.open('https://dudespin1.com', '_blank')">
+                        <button class="play-button" onclick="alert('This is a demo site. In a real casino, this would redirect to the game.')">
                             <i class="fas fa-play"></i> Play for $0.20
                         </button>
                     </div>
@@ -2564,7 +2599,7 @@
                                 <span class="stat-value">Progressive</span>
                             </div>
                         </div>
-                        <button class="play-button" onclick="window.open('https://dudespin1.com', '_blank')">
+                        <button class="play-button" onclick="alert('This is a demo site. In a real casino, this would redirect to the game.')">
                             <i class="fas fa-play"></i> Play for $0.50
                         </button>
                     </div>
@@ -2597,7 +2632,7 @@
                                 <span class="stat-value">x20,000</span>
                             </div>
                         </div>
-                        <button class="play-button" onclick="window.open('https://dudespin1.com', '_blank')">
+                        <button class="play-button" onclick="alert('This is a demo site. In a real casino, this would redirect to the game.')">
                             <i class="fas fa-play"></i> Play for $1
                         </button>
                     </div>
@@ -2606,7 +2641,7 @@
             
             <!-- View All Games Button -->
             <div class="text-center">
-                <a href="https://dudespin1.com" class="btn btn-purple" target="_blank">
+                <a href="#" class="btn btn-purple">
                     <i class="fas fa-gamepad"></i> View All Games
                 </a>
             </div>
@@ -2620,7 +2655,7 @@
             <p class="section-subtitle">Next draw in: <span class="highlight" id="jackpotTimer">23:09:52:19</span></p>
             
             <div class="hero-actions" style="justify-content: center;">
-                <a href="https://dudespin1.com" class="btn btn-gold" target="_blank">
+                <a href="#" class="btn btn-gold">
                     <i class="fas fa-coins"></i> Play Jackpot Games
                 </a>
                 <a href="#winners" class="btn btn-glass">
@@ -2730,7 +2765,7 @@
                 <p class="big-cta-subtitle">Join thousands of players who have already discovered the ultimate crypto casino experience. Sign up now and claim your welcome bonus!</p>
                 
                 <div class="big-cta-buttons">
-                    <a href="https://dudespin1.com" class="btn btn-gold" style="padding: 18px 40px; font-size: 1.2rem;" target="_blank">
+                    <a href="#" class="btn btn-gold" style="padding: 18px 40px; font-size: 1.2rem;">
                         <i class="fas fa-crown"></i> Join Now & Get $6000 Bonus
                     </a>
                     <a href="#games" class="btn btn-purple" style="padding: 18px 40px; font-size: 1.2rem;">
@@ -2773,7 +2808,7 @@
                                 <span class="stat-value">30 Days</span>
                             </div>
                         </div>
-                        <button class="play-button btn-green" onclick="window.open('https://dudespin1.com', '_blank')">
+                        <button class="play-button btn-green" onclick="alert('This is a demo site. In a real casino, you would claim the bonus.')">
                             <i class="fas fa-gift"></i> Claim Bonus
                         </button>
                     </div>
@@ -2802,7 +2837,7 @@
                                 <span class="stat-value">$5,000</span>
                             </div>
                         </div>
-                        <button class="play-button" onclick="window.open('https://dudespin1.com', '_blank')">
+                        <button class="play-button" onclick="alert('This is a demo site. In a real casino, you would get cashback.')">
                             <i class="fas fa-redo"></i> Get Cashback
                         </button>
                     </div>
@@ -2821,16 +2856,16 @@
                         Leading crypto casino platform with instant withdrawals, anonymous betting, and 5000+ games. Gamble responsibly.
                     </p>
                     <div class="social-links">
-                        <a href="https://t.me/dudespin" class="social-link" target="_blank">
+                        <a href="#" class="social-link">
                             <i class="fab fa-telegram"></i>
                         </a>
-                        <a href="https://discord.gg/dudespin" class="social-link" target="_blank">
+                        <a href="#" class="social-link">
                             <i class="fab fa-discord"></i>
                         </a>
-                        <a href="https://twitter.com/dudespin" class="social-link" target="_blank">
+                        <a href="#" class="social-link">
                             <i class="fab fa-twitter"></i>
                         </a>
-                        <a href="https://youtube.com/dudespin" class="social-link" target="_blank">
+                        <a href="#" class="social-link">
                             <i class="fab fa-youtube"></i>
                         </a>
                     </div>
@@ -2862,10 +2897,10 @@
                         <h4>Support</h4>
                         <ul>
                             <li><a href="#faq">FAQ</a></li>
-                            <li><a href="https://dudespin1.com" target="_blank">Live Chat</a></li>
+                            <li><a href="#">Live Chat</a></li>
                             <li><a href="#responsible">Responsible Gambling</a></li>
-                            <li><a href="https://dudespin1.com/terms" target="_blank">Terms & Conditions</a></li>
-                            <li><a href="https://dudespin1.com/privacy" target="_blank">Privacy Policy</a></li>
+                            <li><a href="#">Terms & Conditions</a></li>
+                            <li><a href="#">Privacy Policy</a></li>
                         </ul>
                     </div>
                 </div>
@@ -3208,7 +3243,7 @@
                 const targetElement = document.querySelector(targetId);
                 if (targetElement) {
                     window.scrollTo({
-                        top: targetElement.offsetTop - 80,
+                        top: targetElement.offsetTop - 100, // Увеличили отступ для iPhone
                         behavior: 'smooth'
                     });
                     
