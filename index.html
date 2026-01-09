@@ -1072,6 +1072,7 @@
             background-clip: text;
             margin-bottom: 25px;
             animation: text-glow 4s ease-in-out infinite alternate;
+            line-height: 1.2;
         }
 
         .big-cta-subtitle {
@@ -1661,12 +1662,12 @@
             .hero-content {
                 flex-direction: row;
                 text-align: left;
-                gap: 20px;
+                gap: 60px;
             }
             
             .hero-text {
                 text-align: left;
-                width: 20%;
+                width: 50%;
             }
             
             .hero-visual {
@@ -1840,16 +1841,39 @@
                 flex-direction: column;
                 gap: 15px;
             }
+            
+            /* FIX: Исправляем обрезание заголовка на мобильных */
+            h1 {
+                font-size: 2rem !important;
+                line-height: 1.1 !important;
+                margin-bottom: 1rem !important;
+                letter-spacing: 1px !important;
+                word-break: break-word;
+                overflow-wrap: break-word;
+                hyphens: auto;
+                text-align: center;
+                display: block;
+                width: 100%;
+            }
+            
+            /* Big CTA title fix */
+            .big-cta-title {
+                font-size: 1.8rem !important;
+                line-height: 1.2 !important;
+                margin-bottom: 1rem !important;
+            }
         }
 
         @media (max-width: 576px) {
             h1 {
-                font-size: 3rem;
+                font-size: 1.8rem !important;
                 letter-spacing: 1px;
+                line-height: 1.1 !important;
+                margin-bottom: 0.8rem !important;
             }
             
             h2 {
-                font-size: 2.2rem;
+                font-size: 1.8rem;
             }
             
             .container {
@@ -1857,29 +1881,30 @@
             }
             
             .hero {
-                padding: 120px 0 60px;
+                padding: 100px 0 40px;
             }
             
             .hero-subtitle {
-                font-size: 1.1rem;
+                font-size: 1rem;
             }
             
             .big-cta-title {
-                font-size: 2.2rem;
+                font-size: 1.6rem !important;
+                line-height: 1.2 !important;
             }
             
             .big-cta-subtitle {
-                font-size: 1.2rem;
+                font-size: 1rem;
             }
             
             .jackpot-amount {
-                font-size: 3rem;
+                font-size: 2.5rem;
             }
             
             .mobile-home-btn {
-                width: 55px;
-                height: 55px;
-                font-size: 1.3rem;
+                width: 50px;
+                height: 50px;
+                font-size: 1.2rem;
                 bottom: 15px;
                 right: 15px;
             }
@@ -1896,11 +1921,12 @@
             .faq-section,
             .bonuses-section,
             .big-cta-section {
-                padding: 50px 0;
+                padding: 40px 0;
             }
             
             .key-facts-grid {
                 gap: 15px;
+                grid-template-columns: 1fr 1fr;
             }
             
             .advantages-grid {
@@ -1908,46 +1934,54 @@
             }
             
             .games-grid {
-                gap: 25px;
+                gap: 20px;
             }
             
             .bonuses-grid {
-                gap: 25px;
+                gap: 20px;
             }
             
             /* Уменьшаем иконки еще больше */
             .key-fact-icon,
             .advantage-icon,
             .table-icon {
-                width: 50px;
-                height: 50px;
-                font-size: 1.8rem;
-                margin-bottom: 15px;
+                width: 45px;
+                height: 45px;
+                font-size: 1.5rem;
+                margin-bottom: 12px;
             }
             
             .key-fact-number {
-                font-size: 2.2rem;
+                font-size: 1.8rem;
             }
             
             /* Адаптируем футер для мобилок */
             .footer-links {
                 grid-template-columns: 1fr;
-                gap: 30px;
+                gap: 25px;
             }
             
             .footer-bottom {
-                padding-top: 30px;
+                padding-top: 25px;
+            }
+            
+            .hero-visual {
+                margin-top: 20px;
             }
         }
 
         @media (max-width: 400px) {
             h1 {
-                font-size: 2.5rem;
+                font-size: 1.6rem !important;
+                letter-spacing: 0.8px !important;
+                line-height: 1.1 !important;
+                margin-bottom: 0.8rem !important;
+                padding: 0 10px;
             }
             
             .hero-actions .btn {
-                padding: 16px 20px;
-                font-size: 1rem;
+                padding: 14px 18px;
+                font-size: 0.9rem;
             }
             
             .games-grid,
@@ -1958,6 +1992,33 @@
             .game-card,
             .bonus-card {
                 max-width: 100%;
+            }
+            
+            .key-facts-grid {
+                grid-template-columns: 1fr;
+                gap: 12px;
+            }
+        }
+
+        @media (max-width: 350px) {
+            h1 {
+                font-size: 1.5rem !important;
+                letter-spacing: 0.6px !important;
+                line-height: 1.1 !important;
+                margin-bottom: 0.7rem !important;
+            }
+            
+            .hero {
+                padding: 90px 0 30px;
+            }
+            
+            .big-cta-title {
+                font-size: 1.4rem !important;
+            }
+            
+            .hero-subtitle {
+                font-size: 0.95rem;
+                line-height: 1.5;
             }
         }
 
@@ -2069,7 +2130,11 @@
     <section class="hero" id="home">
         <div class="container hero-content">
             <div class="hero-text">
-                <h1 class="fade-in">ULTIMATE CRYPTO CASINO</h1>
+                <!-- РАЗДЕЛЕНИЕ НА ДВЕ СТРОКИ ДЛЯ МОБИЛЬНЫХ -->
+                <h1 class="fade-in">
+                    <span class="desktop-text">ULTIMATE CRYPTO CASINO</span>
+                    <span class="mobile-text">ULTIMATE<br>CRYPTO<br>CASINO</span>
+                </h1>
                 <p class="hero-subtitle fade-in stagger-1">Experience the future of online gambling with 5000+ games, instant crypto withdrawals, and anonymous betting. Join the revolution!</p>
                 
                 <div class="hero-actions">
@@ -2867,7 +2932,32 @@
             
             // Initialize mobile home button
             initMobileHomeButton();
+            
+            // Initialize responsive text
+            initResponsiveText();
         });
+        
+        // ===== RESPONSIVE TEXT =====
+        function initResponsiveText() {
+            const h1Element = document.querySelector('.hero-text h1');
+            
+            // Скрыть/показать нужные версии текста в зависимости от размера экрана
+            function updateText() {
+                const desktopText = document.querySelector('.desktop-text');
+                const mobileText = document.querySelector('.mobile-text');
+                
+                if (window.innerWidth <= 767) {
+                    if (desktopText) desktopText.style.display = 'none';
+                    if (mobileText) mobileText.style.display = 'block';
+                } else {
+                    if (desktopText) desktopText.style.display = 'block';
+                    if (mobileText) mobileText.style.display = 'none';
+                }
+            }
+            
+            updateText();
+            window.addEventListener('resize', updateText);
+        }
         
         // ===== GAME FILTERS =====
         function initGameFilters() {
@@ -3147,4 +3237,4 @@
         });
     </script>
 </body>
-</html>   
+</html>
